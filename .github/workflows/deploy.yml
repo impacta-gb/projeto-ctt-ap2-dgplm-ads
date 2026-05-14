@@ -55,6 +55,7 @@ jobs:
           zensical build --clean
 
       - name: Upload Build Artifact
+        if: matrix.python-version == '3.11'
         uses: actions/upload-pages-artifact@v5
         with:
           path: site
@@ -72,6 +73,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
