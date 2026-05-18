@@ -56,8 +56,9 @@ jobs:
 
       - name: Upload Build Artifact
         if: matrix.python-version == '3.11'
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
+          name: documentation-site
           path: site
 
   deploy_site:
@@ -76,8 +77,14 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
+          name: documentation-site
+          path: site
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
           path: site
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
