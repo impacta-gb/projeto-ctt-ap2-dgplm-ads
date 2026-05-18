@@ -109,3 +109,13 @@ to create a line break.
 
 Or use a blank line for a new paragraph.
 ```
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Olá")
+}
+```
