@@ -24,12 +24,9 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.10, 3.11]
+        python-version: ["3.10", "3.11"]
 
     steps:
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -48,11 +45,11 @@ jobs:
 
       - name: Install Zensical
         run: |
-          pip install zensical
+          python -m pip install zensical
 
       - name: Build Documentation Site
         run: |
-          zensical build --clean
+          python -m zensical build --clean
 
       - name: Upload Build Artifact
         if: matrix.python-version == '3.11'
@@ -69,11 +66,18 @@ jobs:
 
     if: github.event_name != 'pull_request'
 
+    permissions:
+      pages: write
+      id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
