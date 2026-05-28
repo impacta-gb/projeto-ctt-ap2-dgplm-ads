@@ -1,13 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Du716tKn)
 
-# Integrantes do Grupo
-
-- Luiz Henrique RA: 2501545
-- Diego Gonçalves RA: 2501113 
-- Mellyssa Deborah RA: 2403866
-- Gustavo Silva RA: 2403815
-- Pedro Henrique Cespedes RA: 2500860
-
 # Documentação Go com Zensical
 
 ## Sobre o Projeto
@@ -271,15 +263,50 @@ O site foi publicado utilizando GitHub Pages através de deploy automatizado com
 
 ---
 
-# Conclusão
+# Consolidação Final do Projeto
 
-O projeto permitiu aplicar conceitos importantes de:
+A arquitetura final do workflow do GitHub Actions foi construída de forma colaborativa pelos membros responsáveis pelos pipelines CI/CD do projeto.
 
-* colaboração em equipe
-* Git Flow
-* CI/CD
-* automação
-* revisão de código
-* organização de documentação técnica
+O processo de automação foi dividido em dois jobs principais:
 
-Além disso, possibilitou a utilização prática da linguagem Go e da ferramenta Zensical em um ambiente semelhante ao utilizado em projetos profissionais.
+| Job           | Responsabilidade                                |
+| ------------- | ----------------------------------------------- |
+| `build_site`  | Validação do projeto e geração do site estático |
+| `deploy_site` | Publicação automática no GitHub Pages           |
+
+O job `build_site` ficou responsável pela instalação das dependências, validação do projeto e geração dos arquivos HTML da documentação. Além disso, foi utilizada uma estratégia de matriz (`strategy: matrix`) para validar o funcionamento do projeto em diferentes versões do Python.
+
+Também foi implementado cache de dependências utilizando `actions/cache`, reduzindo o tempo de execução do pipeline e evitando reinstalações desnecessárias.
+
+O job `deploy_site` foi configurado para aguardar a conclusão do `build_site` utilizando a diretiva `needs:`. Após isso, o workflow realiza o download dos artefatos gerados e publica automaticamente o site no GitHub Pages.
+
+Para garantir maior segurança no fluxo CI/CD, foi aplicada uma condicional (`if`) impedindo que o deploy seja executado durante Pull Requests, permitindo publicação apenas em eventos de `push` na branch `main` e execuções agendadas (`schedule`).
+
+O fluxo completo do pipeline ficou organizado da seguinte forma:
+
+```text
+Pull Request / Push / Schedule
+            ↓
+       build_site
+            ↓
+      upload-artifact
+            ↓
+       deploy_site
+            ↓
+      GitHub Pages
+```
+
+Essa arquitetura permitiu maior organização, automação, segurança e separação de responsabilidades no desenvolvimento colaborativo do projeto.
+
+---
+
+# Integrantes do Grupo
+
+| Integrante              | RA      | Responsabilidade                       |
+| ----------------------- | ------- | -------------------------------------- |
+| Luiz Henrique           | 2501545 | Pipeline I (Triggers e Cache)          |
+| Diego Gonçalves         | 2501113 | Pipeline II (Deploy e Segurança)       |
+| Mellyssa Deborah        | 2403866 | Arquiteto de Informação                |
+| Gustavo Silva           | 2403815 | Guardião do Repositório                |
+| Pedro Henrique Cespedes | 2500860 | Engenheiro de Concorrência e Qualidade |
+
