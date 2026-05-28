@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Testes Automatizados em Go
 
 Go possui suporte nativo para testes automatizados através do pacote `testing`.

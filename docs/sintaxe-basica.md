@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Sintaxe Básica e Variáveis em Go
 
 ## Introdução
