@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Instalação do Go
 
 Este guia apresenta o processo de instalação da linguagem Go nos principais sistemas operacionais.
