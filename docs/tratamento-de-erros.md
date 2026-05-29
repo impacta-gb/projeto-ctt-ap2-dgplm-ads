@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Tratamento de Erros (Error Handling)
 
 Go aborda o tratamento de erros de uma forma diferente da maioria das linguagens. Não existem blocos `try/catch` ou exceções tradicionais. Erros são tratados como valores normais de retorno.

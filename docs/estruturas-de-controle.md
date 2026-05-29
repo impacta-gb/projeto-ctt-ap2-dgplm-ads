@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Estruturas de Controle em Go
 
 A linguagem Go possui um conjunto enxuto e poderoso de estruturas de controle de fluxo. Diferente de outras linguagens, Go não utiliza parênteses ao redor das condições.

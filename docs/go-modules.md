@@ -1,3 +1,7 @@
+---
+icon: simple/go
+---
+
 # Gerenciamento de Pacotes (Go Modules)
 
 ## Introdução
