@@ -309,3 +309,4 @@ Essa arquitetura permitiu maior organização, automação, segurança e separa�
 | Mellyssa Deborah        | 2403866 | Arquiteto de Informação                |
 | Gustavo Silva           | 2403815 | Guardião do Repositório                |
 | Pedro Henrique Cespedes | 2500860 | Engenheiro de Concorrência e Qualidade |
+
